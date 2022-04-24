@@ -1,2 +1,2 @@
 # mern-auth
-Node, Express, MongoBD, Mongoose Authentication
+Nodejs, Expressjs, Reactjs Authentication System
