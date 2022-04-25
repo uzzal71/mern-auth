@@ -1,1 +1,2 @@
 Adding a sign-up route to the server
+Generating JSON Web Tokens
