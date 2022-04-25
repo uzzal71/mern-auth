@@ -1,6 +1,7 @@
 # mern-auth
 Nodejs, Expressjs, Reactjs Authentication System
-#Install
+# Install
+<pre>
 git clone "Project Repository"
 Backend install setup
 -> cd back-end
