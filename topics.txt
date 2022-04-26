@@ -1,2 +1,17 @@
+0. Introduction
+Take advantage of React authentication
+What you should know
+The structure of this course
+
+1. User Authentication Basics
+What is user authentication?
+Basic project setup
+Building a login page
+Building a sign-up page
+Creating private React routes
+JSON Web Token basics
 Adding a sign-up route to the server
 Generating JSON Web Tokens
+Adding a login route to the server
+Implementing JWTs on the front end
+Adding JWTs to sign-up page
