@@ -18,3 +18,5 @@ Adding JWTs to sign-up page
 Adding JWTs to login page
 Adding an update user route
 Verifying JSON Web Tokens
+Adding JWTs to the user info page
+Adding logout functionality

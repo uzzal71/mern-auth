@@ -1,27 +1,26 @@
-import jwt, { decode } from 'jsonwebtoken';
-import { ObjectId } from 'mongodb';
+import jwt from 'jsonwebtoken';
+import { ObjectID } from 'mongodb';
 import { getDbConnection } from '../db';
 
-
-export const testRoute = {
+export const updateUserInfoRoute = {
     path: '/api/users/:userId',
     method: 'put',
     handler: async (req, res) => {
         const { authorization } = req.headers;
         const { userId } = req.params;
 
-        const updates = ({
+        const updates = (({
             favoriteFood,
             hairColor,
-            bio
+            bio,
         }) => ({
             favoriteFood,
             hairColor,
-            bio
-        })(req.body);
+            bio,
+        }))(req.body);
 
         if (!authorization) {
-            return res.status(401).json({ message: 'No authorization' });
+            return res.status(401).json({ message: 'No authorization header sent' });
         }
 
         const token = authorization.split(' ')[1];
@@ -31,24 +30,22 @@ export const testRoute = {
 
             const { id } = decoded;
 
-            if (id !== userId) return res.status(401).json({ message: 'Not allowed to update the user\'s data' });
+            if (id !== userId) return res.status(403).json({ message: 'Not allowed to update that user\'s data' });
 
             const db = getDbConnection('react-auth-db');
             const result = await db.collection('users').findOneAndUpdate(
-                { _id: ObjectId(id) },
+                { _id: ObjectID(id) },
                 { $set: { info: updates } },
-                { returnOrginal: false }
+                { returnOriginal: false },
             );
-
             const { email, isVerified, info } = result.value;
 
-            jwt.sign({id, email, isVerified, info}, process.env.JWT_SECRET, { expiresIn: '2d'}, (err, token) => {
+            jwt.sign({ id, email, isVerified, info }, process.env.JWT_SECRET, { expiresIn: '2d' }, (err, token) => {
                 if (err) {
                     return res.status(200).json(err);
                 }
-
-                return res.status(200).json(token);
+                res.status(200).json({ token });
             });
-        });
-    },
-};
+        })
+    }
+}
