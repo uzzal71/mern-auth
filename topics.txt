@@ -16,3 +16,4 @@ Adding a login route to the server
 Implementing JWTs on the front end
 Adding JWTs to sign-up page
 Adding JWTs to login page
+Adding an update user route
