@@ -20,3 +20,13 @@ Adding an update user route
 Verifying JSON Web Tokens
 Adding JWTs to the user info page
 Adding logout functionality
+
+2. Email Verification
+The basic email verification process
+Setting up an email provider
+Sending emails from Node
+Integrating verification tokens
+Creating a verify email page
+Adding a verify email route
+Creating a verification landing page
+Handling successful and failed verifications
